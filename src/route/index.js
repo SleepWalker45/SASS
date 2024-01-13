@@ -23,7 +23,7 @@ class User {
 
   static getList = () =>  this.#list
 
-  static getById = () => this.#list.find((user) => user.id === id)
+  static getById = (id) => this.#list.find((user) => user.id === id)
 
   static deleteById = (id) => {
     const index = this.#list.findIndex(
@@ -40,6 +40,7 @@ class User {
 
   static updateById = (id, data) => {
     const user = this.getById(id)
+    console.log(user)
 
     if (user) {
       this.update(user, data)
@@ -125,10 +126,9 @@ router.post('/user-update', function (req, res) {
   const user = User.getById(Number(id))
 
   if (user.verifyPassword(password)) {
-    User.updateById(user, { email });
+    User.updateById(Number(id), { email });
     result = true;
   }
-  
 
   res.render('success-info', {
     style: 'success-info',
