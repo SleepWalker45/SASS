@@ -3,69 +3,26 @@
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
  }}
 <main class="main">
-  <section>
-    <div class="form">
-      <h1 class="form__title">Создать аккаунт</h1>
-      <form method="POST" action="/success-info">
-        <div class="form__content">
-          <div class="form__field">
-            <label for="email" class="form__label">Email:</label>
-            <input type="email" name="email" class="form__input">
-          </div>
-          <div class="form__field">
-            <label for="login" class="form__label">Логин:</label>
-            <input type="login" name="login" class="form__input">
-          </div>
-          <div class="form__field">
-            <label for="password" class="form__label">Пароль:</label>
-            <input type="password" name="password" class="form__input">
-          </div>
-            <button class="form__button">Создать</button>
-          </div>
-        </form>
-    </div>
-  </section>
-
-  <section>
-    <div class="form">
-      <h1 class="form__title">Список пользователей</h1>
-      <div class="user-list">
-        {{#with data.users}}
-          {{#if isEmpty}}
-            <mark>Список пользователей пуст!</mark>
-            {{else}}
-              <ul>
-                {{#each list}}
-                  <li>{{email}} | {{login}} | {{id}} <a href="/success-info?id={{id}}">(удалить)</a></li>
-                {{/each}}
-              </ul>
-          {{/if}}
-        {{/with}}
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="form">
-      <h1 class="form__title">Обновить данные аккаунта!</h1>
-      <form method="POST" action="/user-update">
-        <div class="form__content">
-          <div class="form__field">
-            <label for="id" class="form__label">ID:</label>
-            <input type="id" name="id" class="form__input">
-          </div>
-          <div class="form__field">
-            <label for="email" class="form__label">Новая почта:</label>
-            <input type="email" name="email" class="form__input">
-          </div>
-          <div class="form__field">
-            <label for="password" class="form__label">Пароль:</label>
-            <input type="password" name="password" class="form__input">
-          </div>
-            <button class="form__button">Обновить</button>
-          </div>
-        </form>
-    </div>
+  <section class="content">
+    <form method="POST" action="/product-create" class="card_create_product">
+        <h1 class="card_title">Информация о товаре </h1>
+        <div class="name_price">
+            <div class="field">
+                <h1 class="name_label">Название товара</h1>
+                <input type="text" name="name" class="name_input">
+            </div>
+            <div class="field">
+                <h1 class="price_label">Цена товара</h1>
+                <input type="number" name="price" class="price_input">
+            </div>
+        </div>
+        <div class="field">
+            <h1 class="description_label">Краткое описание товара</h1>
+            <textarea name="description" rows="5" class="description"></textarea>
+            <p>Отображается в карточке товара</p>
+        </div>
+        <button href="/product-create">Создать товар</button>
+    </form>
   </section>
 </main>
 

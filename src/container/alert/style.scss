@@ -1,0 +1,11 @@
+.main {
+    display: flex;
+    background-color: grey;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: grey;
+}
