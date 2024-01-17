@@ -1,11 +1,49 @@
 .main {
     display: flex;
-    background-color: grey;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 12px;
 }
 
 .card {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
-    background-color: grey;
+
+    border: 1px solid #c0c0c0;
+    border-radius: 12px;
+    padding: 16px;
+    width: 720px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    gap: 18px;
+}
+
+.content_title {
+    font-size: 20px;
+}
+
+.btn_content {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    border: 1px solid rgb(107, 107, 107);
+    border-radius: 4px;
+    padding: 10px 64px;
+    background-color: #376ce9;
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+}
+
+button:hover {
+    opacity: 75%;
 }

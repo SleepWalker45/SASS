@@ -1,0 +1,104 @@
+@use '../../lib/service.scss' as s;
+
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 20px;
+
+}
+
+.content {
+    width: 50%;
+    align-items: center;
+    
+}
+
+.card_create_product {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    width: 100%;
+}
+
+.card_create_product {
+    border: 1px solid rgb(118, 115, 115);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.card_title {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.name_price {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
+
+    .field {
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    input {
+        border: 1px solid black;
+        border-radius: 4px;
+        padding: 4px;
+    }
+}
+
+.field{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    textarea {
+        resize: none;
+        text-wrap: wrap;
+    }
+
+    p {font-weight: 100;}
+}
+
+.description {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.button_field {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    justify-content: space-between;
+
+    .btn-success {
+        border: 1px solid rgb(107, 107, 107);
+        border-radius: 4px;
+        padding: 10px 64px;
+        background-color: #376ce9;
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+
+    .btn-delete {
+        border: 1px solid rgb(107, 107, 107);
+        border-radius: 4px;
+        padding: 10px 64px;
+        background-color: #ad0000;
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+}

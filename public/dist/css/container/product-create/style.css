@@ -1,0 +1,75 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 20px;
+}
+
+.content {
+  width: 50%;
+  align-items: center;
+}
+
+.card_create_product {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.card_create_product {
+  border: 1px solid rgb(118, 115, 115);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.card_title {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.name_price {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-between;
+}
+.name_price .field {
+  box-sizing: border-box;
+  width: 100%;
+}
+.name_price input {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.field textarea {
+  resize: none;
+  text-wrap: wrap;
+}
+.field p {
+  font-weight: 100;
+}
+
+.description {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+button {
+  background-color: rgb(100, 100, 247);
+  color: white;
+  padding: 8px 0;
+  border: 1px solid grey;
+  border-radius: px;
+}
+
+/*# sourceMappingURL=style.css.map */

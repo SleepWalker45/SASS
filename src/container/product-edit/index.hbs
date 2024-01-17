@@ -4,25 +4,38 @@
  }}
 <main class="main">
   <section class="content">
-    <form method="POST" action="/product-create" class="card_create_product">
+    {{#with product}}
+    <form method="POST" action="/product-edit" class="card_create_product">
         <h1 class="card_title">Информация о товаре </h1>
         <div class="name_price">
             <div class="field">
                 <h1 class="name_label">Название товара</h1>
-                <input type="text" name="name" class="name_input">
+                <input type="text" name="name" class="name_input" value="{{name}}">
             </div>
             <div class="field">
                 <h1 class="price_label">Цена товара</h1>
-                <input type="number" name="price" class="price_input">
+                <input type="number" name="price" class="price_input" value="{{price}}">
+            </div>
+            <div class="field">
+                <h1 class="price_id">ID</h1>
+                <input type="id" name="id" class="price_input" value="{{id}}" readonly>
             </div>
         </div>
         <div class="field">
             <h1 class="description_label">Краткое описание товара</h1>
-            <textarea name="description" rows="5" class="description"></textarea>
+            <textarea name="description" rows="5" class="description">{{description}}</textarea>
             <p>Отображается в карточке товара</p>
         </div>
-        <button>Создать товар</button>
+        <div class="button_field">
+            <button class="btn-success">
+                <a>Сохранить изменения</a>
+            </button>
+            <button class="btn-delete">
+                <a href="/product-delete?id={{id}}">Удалить товар</a>
+            </button>
+        </div>
     </form>
+    {{/with}}
   </section>
 </main>
 
