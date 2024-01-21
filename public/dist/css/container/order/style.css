@@ -1,0 +1,107 @@
+.divider {
+  width: 100%;
+  background-color: grey;
+  margin: 20px 0px;
+}
+
+div {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+input {
+  border: 1px solid #CED4DA;
+  border-radius: 4px;
+  padding: 6px 12px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+button {
+  border-radius: 4px;
+  background-color: #0D6EFD;
+  padding: 10px;
+  font-size: 20px;
+  color: white;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 100px 320px;
+  margin-top: 100px;
+  gap: 60px;
+}
+
+.order_body {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  box-shadow: 1px 1px 4px;
+  border-radius: 10px;
+}
+.order_body h1 {
+  font-size: 40px;
+  font-weight: 500;
+  color: #0050FF;
+  margin-bottom: 60px;
+}
+.order_body h2 {
+  font-size: 24px;
+  font-weight: 400;
+  color: #0050FF;
+  margin-bottom: 20px;
+}
+.order_body .name_field, .order_body .price_field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.order_body .name_field span, .order_body .price_field span {
+  font-size: 20px;
+  font-weight: 500;
+}
+.order_body .input_field {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.order_body .description {
+  margin-bottom: 20px;
+}
+.order_body .description div {
+  font-size: 16px;
+  font-weight: 300;
+}
+.order_body .description textarea {
+  border: 1px solid #CED4DA;
+  border-radius: 4px;
+  padding: 6px 12px;
+  width: 100%;
+  margin: 4px 0px;
+  resize: none;
+}
+.order_body .bonus_field {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.order_body .res {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: black;
+}
+.order_body .order_btn {
+  border-radius: 4px;
+  background-color: #0D6EFD;
+  padding: 8px;
+  font-size: 20px;
+  color: white;
+}
+
+/*# sourceMappingURL=style.css.map */

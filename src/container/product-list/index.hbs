@@ -3,7 +3,24 @@
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
  }}
 <main class="main">
-  {{> product-card}}
+    <div class="header">
+        <div class="header_title">
+            <h1>Товары</h1>
+            <p>Комп'ютери та ноутбуки/Комп'ютери, неттопи, моноблоки</p>
+        </div>
+        <div class="header_btn">
+            <button>
+                <a href="/product-create">Добавить товар</a>
+            </button>
+        </div>
+    </div>
+    <section>
+        <ul class="content">
+            {{#each list}}
+                {{> card}}
+            {{/each}}
+        </ul>
+    </section>
 </main>
 
 

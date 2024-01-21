@@ -1,0 +1,58 @@
+:root {
+    --border: #CED4DA;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    min-width: 200px;
+    max-width: 320px;
+
+    h2 {
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    p {
+        font-size: 16px;
+        font-weight: 300;
+    }
+}
+
+.span_sent {
+    border: 1px solid #008000;
+    border-radius: 80px;
+    padding: 8px 16px;
+    width: fit-content;
+    color: green;
+}
+
+.span_sell {
+    border: 1px solid #0050FF;
+    border-radius: 80px;
+    padding: 8px 16px;
+    width: fit-content;
+    color: blue;
+}
+
+.btn_card {
+    border: 1px solid #0050FF;
+    border-radius: 8px;
+    padding: 8px 32px;
+    background-color: #0050FF;
+
+    a {
+        font-size: 16px;
+        color: white;
+        text-decoration: none;
+
+        span {
+            font-size: 20px;
+        }
+    }
+}

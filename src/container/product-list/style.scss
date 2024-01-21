@@ -1,51 +1,60 @@
+@use '../../lib/service.scss' as s;
+
+@use '../../component/card/style.scss' as card;
+
+
 
 .main {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px;
-    margin: 16px 62px;
-}
-
-.card {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    margin: 100px 260px;
+    justify-content: space-around;
+    gap: 60px;
+}
 
-    border: 1px solid #adacac;
-    border-radius: 8px;
-    box-shadow: 2px 2px 7px;
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-    padding: 18px;
+    .header_title {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .header_btn {
+        display: flex;
+        align-items: center;
+
+        button {
+            border-radius: 8px;
+            padding: 12px 32px;
+            background-color: #0050FF;
+
+            a {
+                color: white;
+                text-decoration: none;
+            }
+        }
+    }
 
     h1 {
-        font-size: 24px;
-        font-weight: 700;
+        font-size: 40px;
+        font-weight: 400;
+        color: #0050FF;
     }
 
-    .card_description {
-        font-size: 16px;
-    }
-
-    .card_id {
+    p {
         font-size: 16px;
         font-weight: 300;
-        margin-top: auto;
     }
+}
 
-    .card_footer {
-        display: flex;
-        flex-direction: row;
-        align-content: end;
-        justify-content: space-between;
-
-        .price {
-            font-size: 20px;
-            font-weight: 500;
-        }
-
-        a {
-            color: blue;
-            text-decoration: none;
-        }
-    }
+.content {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    gap: 16px;
+    width: 100%;
+    justify-content: space-between;
 }

@@ -1,0 +1,39 @@
+{{! 
+Це код container файлу для index сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
+ }}
+<main class="main">
+    <div class="product_content">
+        <img src="/img/image616.jpg" alt="">
+        <div>
+            <h1>Комп'ютер Artline Gaming (X43v31) AMD Ryzen 5 3600</h1>
+            {{> divider}}
+            <p>AMD Ryzen 5 3600 (3.6 - 4.2 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 480 ГБ / nVidia GeForce RTX 3050, 8 ГБ / без ОД / LAN / без ОС</p>
+            {{> divider}}
+            <form class="product_form" action="">
+                <p>Кількість товару</p>
+                <input type="number" placeholder="Укажите количество товара">
+                <button class="btn_card">
+                    <a href="">Купить сейчас:<span> 25000$</span></a>
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="other_content">
+        <div class="other_content_title">
+            <h1>Похожие товары</h1>
+            <p>Компьютеры и ноутбуки</p>
+        </div>
+        <div class="other_content_cards">
+            {{> card}}
+            {{> card}}
+            {{> card}}
+        </div>
+    </div>
+</main>
+
+
+{{! 
+    Цей код містить лише те, що буде виводитись в <body>
+    Адже наш layout/default.hbs має вже структуру HTML
+}}

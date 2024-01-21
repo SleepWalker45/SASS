@@ -1,0 +1,85 @@
+@use '../../lib/service.scss' as s;
+
+@use '../../component/card/style.scss' as card;
+@use '../../component/divider/style.scss' as divider;
+
+
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 100px 320px;
+    margin-top: 100px;
+    gap: 60px;
+}
+
+.product_content {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+
+    img {
+        width: 490;
+    }
+
+    div {
+        width: 490px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    h1 {
+        font-size: 28px;
+        font-weight: 400;
+        color: #0050FF;
+    }
+}
+.product_form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    input {
+        border: 1px solid grey;
+        border-radius: 6px;
+        padding: 12px 24px;
+    }
+}
+
+.other_content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 60px;
+
+    .other_content_title {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        h1 {
+            font-size: 32px;
+            font-weight: 400;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        * {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .other_content_cards {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,56 @@
+{{! 
+Це код container файлу для index сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
+ }}
+<main class="main">
+    <form method="POST" action="/order">
+        <section class="order_body">
+            <h1>Ваше замовлення</h1>
+            <ul>
+                <li>
+                    <div class="name_field">
+                        <h6>Комп'ютер Artline Gaming (X43v31) AMD Ryzen 5 3600</h6>
+                        <span>113 109$</span>
+                    </div>
+                    <div class="name_field">
+                        <h6>Комп'ютер Artline Gaming (X43v31) AMD Ryzen 5 3600</h6>
+                        <span>113 109$</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="price_field">
+                <h6>Вартість доставки</h6>
+                <span>150$</span>
+                <input type="hidden" value="150" name="deliveryPrice">
+            </div>
+            <h2>Оформлення замовлення</h2>
+            <div class="input_field">
+                {{> field name='lastname' text='Фамилия'}}
+                {{> field name='firstname' text='Имя'}}
+                {{> field name='phone' text='Мобильный телефон'}}
+                {{> field name='email' text='Електронная почта'}}
+            </div>
+            <div class="description">
+                <div>
+                    <div for="">Комментарий</div>
+                    <textarea name="description" rows="3" type="text"></textarea>
+                    <p>Комментарий будет передан курьеру</p>
+                </div>
+            </div>
+            <div class="bonus_field">
+                {{> field name='bonus' text='Списать бонусы'}}
+                {{> field name='promo' text='Промо-код'}}
+            </div>
+            <h2 class="res">Всього: 113109₴ (+1131,09₴ на бонусний рахунок)</h2>
+            <input type="hidden" name="productPrice">
+            <input type="hidden" name="totalPrice">
+            {{> button text='Оформить заказ'}}
+        </section>
+    </form>
+</main>
+
+
+{{! 
+    Цей код містить лише те, що буде виводитись в <body>
+    Адже наш layout/default.hbs має вже структуру HTML
+}}

@@ -3,27 +3,24 @@
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
  }}
 <main class="main">
-  <section class="content">
-    <form method="POST" action="/product-create" class="card_create_product">
-        <h1 class="card_title">Информация о товаре </h1>
-        <div class="name_price">
-            <div class="field">
-                <h1 class="name_label">Название товара</h1>
-                <input type="text" name="name" class="name_input">
+    <form method="POST" action="/product-create">
+        <section class="order_body">
+            <h1>Новый товар</h1>
+            <div class="input_field">
+                {{> field name='name' text='Название'}}
             </div>
-            <div class="field">
-                <h1 class="price_label">Цена товара</h1>
-                <input type="number" name="price" class="price_input">
+            <div class="description">
+                <div>
+                    <div for="">Описание</div>
+                    <textarea name="description" rows="3" type="text"></textarea>
+                </div>
             </div>
-        </div>
-        <div class="field">
-            <h1 class="description_label">Краткое описание товара</h1>
-            <textarea name="description" rows="5" class="description"></textarea>
-            <p>Отображается в карточке товара</p>
-        </div>
-        <button>Создать товар</button>
+            <div class="input_field">
+                {{> field name='price' text='Цена'}}
+            </div>
+            {{> button text='Добавить'}}
+        </section>
     </form>
-  </section>
 </main>
 
 
