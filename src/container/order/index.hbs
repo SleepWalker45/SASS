@@ -3,32 +3,31 @@
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
  }}
 <main class="main">
-    <form method="POST" action="/order">
+    <form method="POST" action="/order?id={{id}}">
         <section class="order_body">
             <h1>Ваше замовлення</h1>
+            {{#with product}}
             <ul>
                 <li>
                     <div class="name_field">
-                        <h6>Комп'ютер Artline Gaming (X43v31) AMD Ryzen 5 3600</h6>
-                        <span>113 109$</span>
-                    </div>
-                    <div class="name_field">
-                        <h6>Комп'ютер Artline Gaming (X43v31) AMD Ryzen 5 3600</h6>
-                        <span>113 109$</span>
+                        <h6>{{name}} ({{../amount}} шт)</h6>
+                        <input type="hidden" value="{{../amount}}" name="amount">
+                        <span>{{../productPrice}}$</span>
                     </div>
                 </li>
             </ul>
+            {{/with}}
             <div class="price_field">
                 <h6>Вартість доставки</h6>
                 <span>150$</span>
-                <input type="hidden" value="150" name="deliveryPrice">
+                <input type="hidden" value=150 name="deliveryPrice">
             </div>
             <h2>Оформлення замовлення</h2>
             <div class="input_field">
                 {{> field name='lastname' text='Фамилия'}}
                 {{> field name='firstname' text='Имя'}}
-                {{> field name='phone' text='Мобильный телефон'}}
-                {{> field name='email' text='Електронная почта'}}
+                {{> field name='phone' text='Мобильный телефон' type='number'}}
+                {{> field name='email' text='Електронная почта' type='email'}}
             </div>
             <div class="description">
                 <div>
@@ -38,12 +37,14 @@
                 </div>
             </div>
             <div class="bonus_field">
-                {{> field name='bonus' text='Списать бонусы'}}
+                {{> field name='minusBonus' text='Списать бонусы'}}
                 {{> field name='promo' text='Промо-код'}}
             </div>
-            <h2 class="res">Всього: 113109₴ (+1131,09₴ на бонусний рахунок)</h2>
-            <input type="hidden" name="productPrice">
-            <input type="hidden" name="totalPrice">
+            <h2 class="res">Всього: {{totalPrice}}₴ (+{{cashBack}}₴ на бонусний рахунок)</h2>
+            <input type="hidden" name="id" value="{{id}}">
+            <input type="hidden" name="cashBack" value="{{cashBack}}">
+            <input type="hidden" name="productPrice" value="{{productPrice}}">
+            <input type="hidden" name="totalPrice" value="{{totalPrice}}">
             {{> button text='Оформить заказ'}}
         </section>
     </form>

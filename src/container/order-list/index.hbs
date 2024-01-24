@@ -6,96 +6,26 @@
         <section class="order_body">
             <h1 class="order_list">Мои заказы</h1>
             <ul>
+                {{#each userList}}
                 <li>
-                    <div class="order_stroke">
-                        <div class="order_id">ID: 14587</div>
+                    <a href="" class="order_stroke">
+                        <div class="order_id">ID: {{id}}</div>
                         <div class="order_field">
                             <p>Товары</p>
-                            <h5>Футбольный мяч</h5>
+                            <h5>{{product.name}}</h5>
                         </div>
                         <div class="order_field">
                             <p>Сумма заказа</p>
-                            <h5>1 260.75₴</h5>
+                            <h5>{{totalPrice}} ₴</h5>
                         </div>
                         <div class="order_field">
                             <p>Бонусы</p>
-                            <h5>12.60₴</h5>
+                            <h5>{{cashBack}} ₴</h5>
                         </div>
-                    </div>
+                    </a>
                     {{> divider}}
                 </li>
-                <li>
-                    <div class="order_stroke">
-                        <div class="order_id">ID: 14587</div>
-                        <div class="order_field">
-                            <p>Товары</p>
-                            <h5>Футбольный мяч</h5>
-                        </div>
-                        <div class="order_field">
-                            <p>Сумма заказа</p>
-                            <h5>1 260.75₴</h5>
-                        </div>
-                        <div class="order_field">
-                            <p>Бонусы</p>
-                            <h5>12.60₴</h5>
-                        </div>
-                    </div>
-                    {{> divider}}
-                </li>
-                <li>
-                    <div class="order_stroke">
-                        <div class="order_id">ID: 14587</div>
-                        <div class="order_field">
-                            <p>Товары</p>
-                            <h5>Футбольный мяч</h5>
-                        </div>
-                        <div class="order_field">
-                            <p>Сумма заказа</p>
-                            <h5>1 260.75₴</h5>
-                        </div>
-                        <div class="order_field">
-                            <p>Бонусы</p>
-                            <h5>12.60₴</h5>
-                        </div>
-                    </div>
-                    {{> divider}}
-                </li>
-                <li>
-                    <div class="order_stroke">
-                        <div class="order_id">ID: 14587</div>
-                        <div class="order_field">
-                            <p>Товары</p>
-                            <h5>Футбольный мяч</h5>
-                        </div>
-                        <div class="order_field">
-                            <p>Сумма заказа</p>
-                            <h5>1 260.75₴</h5>
-                        </div>
-                        <div class="order_field">
-                            <p>Бонусы</p>
-                            <h5>12.60₴</h5>
-                        </div>
-                    </div>
-                    {{> divider}}
-                </li>
-                <li>
-                    <div class="order_stroke">
-                        <div class="order_id">ID: 14587</div>
-                        <div class="order_field">
-                            <p>Товары</p>
-                            <h5>Футбольный мяч</h5>
-                        </div>
-                        <div class="order_field">
-                            <p>Сумма заказа</p>
-                            <h5>1 260.75₴</h5>
-                        </div>
-                        <div class="order_field">
-                            <p>Бонусы</p>
-                            <h5>12.60₴</h5>
-                        </div>
-                    </div>
-                    {{> divider}}
-                </li>
+                {{/each}}
             </ul>
         </section>
 </main>

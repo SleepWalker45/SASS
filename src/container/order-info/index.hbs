@@ -1,0 +1,19 @@
+{{! 
+Це код container файлу для index сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
+ }}
+<main class="main">
+    <form method="POST" action="/order?id={{id}}">
+        <section class="order_body">
+            <h1>Информация о заказе</h1>
+            {{> field text='ID' name=id type='read'}}
+            {{> button text='Оформить заказ'}}
+        </section>
+    </form>
+</main>
+
+
+{{! 
+    Цей код містить лише те, що буде виводитись в <body>
+    Адже наш layout/default.hbs має вже структуру HTML
+}}

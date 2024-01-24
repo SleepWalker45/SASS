@@ -6,17 +6,20 @@
     <div class="product_content">
         <img src="/img/image616.jpg" alt="">
         <div>
-            <h1>Комп'ютер Artline Gaming (X43v31) AMD Ryzen 5 3600</h1>
+            {{#with product}}
+            <h1>{{name}}</h1>
             {{> divider}}
-            <p>AMD Ryzen 5 3600 (3.6 - 4.2 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 480 ГБ / nVidia GeForce RTX 3050, 8 ГБ / без ОД / LAN / без ОС</p>
+            <p>{{description}}</p>
             {{> divider}}
-            <form class="product_form" action="">
+            <form class="product_form" method="POST" action="/purchase-product">
                 <p>Кількість товару</p>
-                <input type="number" placeholder="Укажите количество товара">
+                <input type="number" name="amount" placeholder="Укажите количество товара">
                 <button class="btn_card">
-                    <a href="">Купить сейчас:<span> 25000$</span></a>
+                    <a >Купить сейчас:<span> {{price}}$</span></a>
                 </button>
+                <input type="hidden" name="id" value="{{id}}">
             </form>
+            {{/with}}
         </div>
     </div>
     <div class="other_content">
@@ -25,9 +28,9 @@
             <p>Компьютеры и ноутбуки</p>
         </div>
         <div class="other_content_cards">
-            {{> card}}
-            {{> card}}
-            {{> card}}
+            {{#each otherProducts}}
+                {{> card}}
+            {{/each}}
         </div>
     </div>
 </main>

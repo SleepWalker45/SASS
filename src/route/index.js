@@ -4,22 +4,51 @@ const express = require('express')
 const router = express.Router()
 // ================================================================
 
+
+// ================================================================
+
 class Product {
+  static #deliveryPrice = 150;
   static #list = [];
   static #count = 0;
 
-  constructor (name, description, price) {
+  constructor (name, description, price, readyTo, topToSales) {
     this.id = ++Product.#count;
     this.name = name;
     this.description = description;
     this.price = price;
+    this.totalPrice = this.price + Product.#deliveryPrice;
+    this.readyTo = readyTo? true : false;
+    this.topToSales = topToSales? true : false;
   }
 
   static getList = () => Product.#list;
 
   static add = (product) => this.#list.push(product);
 
-  static getById = (id) => this.#list.find((product) = product.id === id)
+  static getById = (id) => {return this.#list.find((product) => product.id === id)};
+
+  static getOtherProducts = (id) => {
+    const getRandomElement = (array) => array[Math.floor(Math.random() * array.length)];
+
+    let otherProducts = [];
+
+    if (Product.#list.length <= 3) {
+      console.log('Выполнился if')
+      return otherProducts = Product.#list.filter((product) => product.id !== id);
+    } else {
+      console.log('Выполинлся else')
+      for (let i = 0; i < 3;) {
+        const randomElement = getRandomElement(Product.#list);
+        console.log(randomElement)
+        if (!otherProducts.includes(randomElement) && randomElement !== Product.getById(id)) {
+          otherProducts.push(randomElement);
+          i++
+        }
+      }
+      return otherProducts;
+    }
+  }
 
 }
 
@@ -30,7 +59,7 @@ class Purchase {
   static #list = [];
 
   constructor (data, product) {
-    this.id = ++Purchase.#count
+    this.id = ++Purchase.#count;
 
     this.firstname = data.firstname;
     this.lastname = data.lastname;
@@ -44,24 +73,19 @@ class Purchase {
 
     this.totalPrice = data.totalPrice;
     this.productPrice = data.productPrice;
-    this.deliveryPrice = data.deliveryPrice;
     this.amount = data.amount;
+    this.cashBack = data.cashBack;
 
     this.product = product;
   }
 
-  static add = (...arg) => {
-    const newPurchase = new Purchase (...arg);
-    this.#list.push(newPurchase);
-    return newPurchase;
-  }
+  static add = (purchase) => this.#list.push(purchase);
 
-  static getList = () => {
-    return Purchase.#list.reverse();
-  }
+  static getList = () => Purchase.#list.reverse();
+  
 
   static getById = (id) => {
-    return Purchase.#list.find((item) => item.id === id);
+    return Purchase.#list.find((product) => product.id === id);
   }
 
   static updateById = (id, data) => {
@@ -133,9 +157,11 @@ router.get('/product-create', function (req, res) {
 })
 
 router.post('/product-create', function (req, res) {
-  const {name, description, price} = req.body;
+  const {name, description, price, readyTo, topToSales} = req.body;
+  console.log(readyTo);
+  console.log(topToSales);
 
-  const product = new Product(name, description, price);
+  const product = new Product(name, description, price, readyTo, topToSales);
   console.log(product);
 
   Product.add(product);
@@ -160,31 +186,59 @@ router.post('/product-create', function (req, res) {
 router.get('/purchase-product', function (req, res) {
 const {id} = req.query;
 console.log(Number(id))
-const item = Product.getById(Number(id));
-console.log(item);
+const product = Product.getById(Number(id));
+console.log(product)
 
 
   res.render('purchase-product', {
     style: 'purchase-product',
+    product,
+    id,
+    otherProducts: Product.getOtherProducts(Number(id)),
     
   })
   // ↑↑ сюди вводимо JSON дані
 })
 
 router.post('/purchase-product', function (req, res) {
+  let { id, amount} = req.body;
+  id = Number(id)
+  amount = Number(amount);
+  console.log(`Это id с purchase-product ${id}`)
+  if (amount < 1) {
+    console.log('if заработал')
+    return res.render('alert', {
+      style: 'alert',
+      info: 'Указано неправильное количество!',
+      link: `purchase-product?id=${id}`,
+    })
+  }
 
+  const product = Product.getById(Number(id));
 
-  res.render('purchase-product', {
-    style: 'purchase-product',
-    data: {
-    }
-  })
+  const productPrice = product.price;
+  const orderPrice = productPrice * Number(amount);
+  const totalPrice = orderPrice + 150;
+  const cashBack = totalPrice * 0.01
+
+    res.render('order', {
+      style: 'order',
+      product,
+      amount,
+      productPrice,
+      totalPrice,
+      cashBack,
+      id,
+    })
   // ↑↑ сюди вводимо JSON дані
 })
 
 // ================================================================
 
 router.get('/order', function (req, res) {
+  const {id} = req.query;
+  const product = Product.getById(id);
+  console.log(product)
 
   res.render('order', {
     style: 'order',
@@ -195,24 +249,17 @@ router.get('/order', function (req, res) {
 })
 
 router.post('/order', function (req, res) {
-  const id = Number(req.query.id);
+  const {firstname, lastname, phone, email, description, totalPrice, productPrice, cashBack, amount, id} = req.body;
+  const product = Product.getById(Number(id));
 
-  let {
-    totalPrice,
-    productPrice,
-    deliveryPrice,
-    amount,
+  const user = new Purchase({firstname, lastname, phone, email, description, totalPrice, productPrice, cashBack, amount}, product);
+  Purchase.add(user);
 
-    firstname,
-    lastname,
-    email,
-    phone,
-  } = req.body;
-
-  res.render('order', {
-    style: 'order',
-    data: {
-    }
+  const userList = Purchase.getList();
+  
+  res.render('order-list', {
+    style: 'order-list',
+    userList,
   })
   // ↑↑ сюди вводимо JSON дані
 })
@@ -220,11 +267,30 @@ router.post('/order', function (req, res) {
 // ================================================================
 
 router.get('/order-list', function (req, res) {
+  const id = req.query;
+  const user = Purchase.getById(Number(id))
 
   res.render('order-list', {
     style: 'order-list',
-    data: {
-    }
+    user,
+  })
+  // ↑↑ сюди вводимо JSON дані
+})
+
+// ================================================================
+
+router.get('/order-info', function (req, res) {
+
+  res.render('order-list', {
+    style: 'order-list',
+  })
+  // ↑↑ сюди вводимо JSON дані
+})
+
+router.post('/order-info', function (req, res) {
+
+  res.render('order-list', {
+    style: 'order-list',
   })
   // ↑↑ сюди вводимо JSON дані
 })

@@ -28,11 +28,32 @@
         margin-bottom: 60px;
     }
 
+    h2 {
+        font-size: 24px;
+        font-weight: 400;
+        color: #0050FF;
+        margin-bottom: 20px;
+    }
+
+    .name_field, .price_field {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        span {
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+
     .input_field {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 20px;
         margin-bottom: 20px;
+
+        
     }
 
     .description {
@@ -73,17 +94,5 @@
         padding: 8px ;
         font-size: 20px;
         color: white;
-    }
-
-    .checkboxs {
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-        gap: 12px;
-        margin-bottom: 20px;
-
-        * {
-            margin: 0;
-        }
     }
 }

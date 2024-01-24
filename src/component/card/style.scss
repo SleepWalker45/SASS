@@ -22,9 +22,22 @@
         font-size: 16px;
         font-weight: 300;
     }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .footer {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: auto;
+    }
 }
 
-.span_sent {
+.ReadyTo {
     border: 1px solid #008000;
     border-radius: 80px;
     padding: 8px 16px;
@@ -32,7 +45,7 @@
     color: green;
 }
 
-.span_sell {
+.topToSales {
     border: 1px solid #0050FF;
     border-radius: 80px;
     padding: 8px 16px;

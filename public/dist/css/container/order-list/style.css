@@ -52,6 +52,7 @@ h1 {
   flex-direction: row;
   gap: 20px;
   justify-content: space-between;
+  text-decoration: none;
 }
 .order_stroke * {
   line-height: 150%;
