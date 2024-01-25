@@ -3,11 +3,30 @@
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
  }}
 <main class="main">
-    <form method="POST" action="/order?id={{id}}">
+    <form>
         <section class="order_body">
             <h1>Информация о заказе</h1>
-            {{> field text='ID' name=id type='read'}}
-            {{> button text='Оформить заказ'}}
+            {{> fieldInfo text='ID' info=id}}
+            {{> divider}}
+            <div class="input_field">
+                {{> fieldInfo text='Имя' info=user.firstname}}
+                {{> fieldInfo text='Фамилия' info=user.lastname}}
+                {{> fieldInfo text='Телефон' info=user.phone}}
+                {{> fieldInfo text='Почта' info=user.email}}
+            </div>
+            {{> divider}}
+            {{> fieldInfo text='ID' info=user.product.name}}
+            {{> fieldInfo text='ID' info=user.description}}
+            {{> divider}}
+            <div class="input_field">
+                {{> fieldInfo text='Стоимость товаров' info=price}}
+                {{> fieldInfo text='Стоимость доставки' info=deliveryPrice}}
+                {{> fieldInfo text='Сумма к оплате' info=user.totalPrice}}
+                {{> fieldInfo text='Насчитано бонусов' info=user.cashBack}}
+            </div>
+            <button class="btn_card">
+                <a href="/order-change?id={{id}}">Изменить данные</a>
+            </button>
         </section>
     </form>
 </main>

@@ -6,9 +6,9 @@
         <section class="order_body">
             <h1 class="order_list">Мои заказы</h1>
             <ul>
-                {{#each userList}}
+                {{#each list}}
                 <li>
-                    <a href="" class="order_stroke">
+                    <a href="/order-info?id={{id}}" class="order_stroke">
                         <div class="order_id">ID: {{id}}</div>
                         <div class="order_field">
                             <p>Товары</p>

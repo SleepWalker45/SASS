@@ -81,7 +81,10 @@ class Purchase {
 
   static add = (purchase) => this.#list.push(purchase);
 
-  static getList = () => Purchase.#list.reverse();
+  static getList = () => {
+    const reversedList = Purchase.#list.slice().reverse();
+    return reversedList;
+  };
   
 
   static getById = (id) => {
@@ -225,6 +228,7 @@ router.post('/purchase-product', function (req, res) {
       style: 'order',
       product,
       amount,
+      orderPrice,
       productPrice,
       totalPrice,
       cashBack,
@@ -257,9 +261,11 @@ router.post('/order', function (req, res) {
 
   const userList = Purchase.getList();
   
-  res.render('order-list', {
-    style: 'order-list',
-    userList,
+  res.render('alert', {
+    style: 'alert',
+    info: 'Заказ оформлен!',
+    link: 'order-list',
+    id
   })
   // ↑↑ сюди вводимо JSON дані
 })
@@ -267,12 +273,11 @@ router.post('/order', function (req, res) {
 // ================================================================
 
 router.get('/order-list', function (req, res) {
-  const id = req.query;
-  const user = Purchase.getById(Number(id))
+  const list = Purchase.getList();
 
   res.render('order-list', {
     style: 'order-list',
-    user,
+    list,
   })
   // ↑↑ сюди вводимо JSON дані
 })
@@ -280,9 +285,19 @@ router.get('/order-list', function (req, res) {
 // ================================================================
 
 router.get('/order-info', function (req, res) {
-
-  res.render('order-list', {
-    style: 'order-list',
+  console.log('Запустился order-info')
+  let id = req.query.id;
+  id = Number(id);
+  const user = Purchase.getById(id);
+  console.log(user)
+  const deliveryPrice = Purchase.DELIVERY_PRICE;
+  const price = user.totalPrice - deliveryPrice;
+  res.render('order-info', {
+    style: 'order-info',
+    id,
+    user,
+    price,
+    deliveryPrice
   })
   // ↑↑ сюди вводимо JSON дані
 })
@@ -291,6 +306,33 @@ router.post('/order-info', function (req, res) {
 
   res.render('order-list', {
     style: 'order-list',
+  })
+  // ↑↑ сюди вводимо JSON дані
+})
+
+// ================================================================
+
+router.get('/order-change', function (req, res) {
+  let id = req.query.id;
+  id = Number(id);
+  console.log(id)
+  res.render('order-change', {
+    style: 'order-change',
+    id
+  })
+  // ↑↑ сюди вводимо JSON дані
+})
+
+router.post('/order-change', function (req, res) {
+  const id = req.query.id
+  const { lastname, firstname, phone, email } = req.body;
+
+  Purchase.updateById(Number(id), {lastname, firstname, phone, email});
+
+  res.render('alert', {
+    style: 'alert',
+    info: 'Данные изменены',
+    link: 'order-list'
   })
   // ↑↑ сюди вводимо JSON дані
 })
